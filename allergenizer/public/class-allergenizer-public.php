@@ -128,7 +128,7 @@ class Allergenizer_Public {
 	}	
 
 	/**
-	 * Modify The Content so that known allergenes are highlighted.
+	 * If no shortcode is used to set content boundaries, modify The Content so that known allergens are highlighted.
 	 *
 	 * @since    1.0.0
 	 * @param    string    $text    The content to be searched
@@ -148,7 +148,7 @@ class Allergenizer_Public {
 			$text = str_replace($search_for, $replace_with, $text);
 		}
 
-		return $text . $found_allergens_in_content;
+		return $text;
 		
 	}
 

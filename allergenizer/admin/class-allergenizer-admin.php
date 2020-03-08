@@ -209,7 +209,7 @@ class Allergenizer_Admin {
 	 */
 	public function allergenizer_render_metabox() {
 
-		add_meta_box("allergenizer-meta", "Allergenizer info", array($this, "allergenizer_metabox_contents"), "page", "side");
+		add_meta_box("allergenizer-meta", "Allergenizer shortcodes", array($this, "allergenizer_metabox_contents"), "page", "side");
 
 	}
 
@@ -220,8 +220,14 @@ class Allergenizer_Admin {
 	 */
 	public function allergenizer_metabox_contents() {
 
-		echo "Hello!";
+		
+		echo "<p><strong>[allergenizer][/allergenizer]</strong><br> 
+		Defines the part of the content that should be checked for allergens.</p>
+		
+		<p><strong>[allergenizer-list]</strong><br>
+		Inserts an info box listing all found allergens.</p>";
 
+		
 	}
 
 }
