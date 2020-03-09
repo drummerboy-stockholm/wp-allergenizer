@@ -30,7 +30,7 @@ class Allergenizer_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
+		delete_option('allergenizer_allergenelist');
 	}
 
 }

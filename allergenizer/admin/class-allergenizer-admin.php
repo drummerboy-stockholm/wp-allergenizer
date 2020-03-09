@@ -139,6 +139,53 @@ class Allergenizer_Admin {
 	}
 
 	/**
+	 * Default values for the allergens option field
+	 * FUTURE IMPLEMENTATION: Connect to API to fetch defaults
+	 *
+	 * @since  1.0.0
+	 */
+	private function get_default_allergens() {
+	 $default_allergens = array(
+		"blötdjur",
+		"fisk",
+		"torsk",
+		"lax",
+		"abborre",
+		"gädda",
+		"kräftdjur",
+		"musslor",
+		"räkor",
+		"lupinbönor",
+		"mjölk",
+		"nötter",
+		"mandel",
+		"hasselnöt",
+		"valnöt",
+		"cashewnöt",
+		"pekannöt",
+		"paranöt",
+		"pistagenöt",
+		"macadamianöt",
+		"selleri",
+		"senap",
+		"sesamfrön",
+		"sojabönor",
+		"vete",
+		"råg",
+		"korn",
+		"havre",
+		"spelt",
+		"kamutvete",
+		"durumvete",
+		"ströbröd",
+		"svaveldioxid",
+		"sulfit",
+		"ägg");
+
+		return $default_allergens;
+	 }
+	
+	/**
 	 * Register all related settings of this plugin
 	 *
 	 * @since  1.0.0
@@ -160,6 +207,8 @@ class Allergenizer_Admin {
 			$this->plugin_name . '_general',
 			array( 'label_for' => $this->plugin_name . '_allergenelist' )
 		);
+		
+		add_option($this->plugin_name . '_allergenelist', implode("\n", str_replace("\r", "", $this->get_default_allergens())));
 
 		register_setting( $this->plugin_name, $this->plugin_name . '_allergenelist', array( $this, $this->plugin_name . '_sanitize_allergenelist' ) );
 	}
@@ -178,7 +227,7 @@ class Allergenizer_Admin {
 	 *
 	 * @since  1.0.0
 	 */
-	public function allergenizer_allergenelist_cb() {
+	public function allergenizer_allergenelist_cb() {	
 		$allergenes = get_option( $this->plugin_name . '_allergenelist' );
 		?>
 			<fieldset>
